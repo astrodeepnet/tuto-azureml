@@ -1,0 +1,17 @@
+name: azure-astrodeep
+channels:
+  - conda-forge
+dependencies:
+  - python=3.7
+  # Jupyter
+  - jupyter
+  - notebook
+  - nbconvert
+  - widgetsnbextension
+  # Python Kernel
+  - ipykernel
+  - ipympl
+  - ipywidgets
+  - matplotlib
+  - pip:
+    - azureml-sdk[notebooks,automl]
