@@ -97,30 +97,31 @@ blob = BlobClient.from_blob_url(blob_url, credential=storage_keys)
 
 
 
-### Récupération/upload d'un fichier depuis une url
+### Upload d'un fichier avec API Python
+
+#### Avec l'API 2.X de `azure-storage-blob`
 
 ```python
-from azure.storage.blob import download_blob_from_url, upload_blob_to_url
+from azure.storage.blob import BlockBlobService
 
 storage_account_name = 'blobsandbox1'
-container_name = 'aztest'
-blob_name = 'hello.txt'
 storage_key = 'XXX'
 
+container_name = 'aztest'
+blob_name = 'hello.txt'
 blob_url = f'https://{storage_account_name}.blob.core.windows.net/{container_name}/{blob_name}'
 local_filepath = 'azure_hello.txt'
 
-# Download file from storage
-download_blob_from_url(
-	blob_url, 
-	local_filepath, 
-	credential=storage_key)
+blob_service = BlockBlobService(
+    account_name=storage_account_name, 
+    account_key=storage_key
+)
 
 # Upload file to storage
-upload_blob_to_url(
-	blob_url, 
-	local_filepath, 
-	credential=storage_key)
+blob_service.create_blob_from_path(
+    container_name, 
+    blob_name, 
+    local_filepath)
 ```
 
 
