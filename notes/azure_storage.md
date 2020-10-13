@@ -81,7 +81,7 @@ blob_name = 'hello.txt'
 storage_key = 'XXX'
 
 container_url = f'https://{storage_account_name}.blob.core.windows.net/{container_name}'
-blob_url = f'{container_url}/{blob_name}s'
+blob_url = f'{container_url}/{blob_name}'
 
 container = ContainerClient.from_container_url(container_url, credential=storage_key)
 
@@ -100,7 +100,7 @@ blob = BlobClient.from_blob_url(blob_url, credential=storage_keys)
 ### Récupération/upload d'un fichier depuis une url
 
 ```python
-from azure.storage.blob import download_blob_from_url, upload_blob_from_url
+from azure.storage.blob import download_blob_from_url, upload_blob_to_url
 
 storage_account_name = 'blobsandbox1'
 container_name = 'aztest'
@@ -117,7 +117,7 @@ download_blob_from_url(
 	credential=storage_key)
 
 # Upload file to storage
-upload_blob_from_url(
+upload_blob_to_url(
 	blob_url, 
 	local_filepath, 
 	credential=storage_key)
