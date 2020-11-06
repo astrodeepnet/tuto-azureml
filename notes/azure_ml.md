@@ -63,8 +63,9 @@ print(compute_target.get_status().serialize())
 
 from azureml.core.compute import ComputeTarget
 
+```python
 compute_target = ComputeTarget(workspace=ws, name=cluster_name)
-
+```
 
 ### Create and register a dataset
 
