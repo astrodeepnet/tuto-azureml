@@ -20,6 +20,16 @@ In any Jupyter notebook, setup the Workspace, Compute target, Dataset, Experimen
 
 ```python
 from azureml.core import Workspace
+from azureml.core.authentication import InteractiveLoginAuthentication
+
+# ID of the Azure subscription directory
+# which can be obtained on https://portal.azure.com
+# in the upper right corner when trying to "Switch directory"
+tenant_id = ...
+
+auth = InteractiveLoginAuthentication(force=False, tenant_id=tenant_id, cloud=None)
+
+ws = Workspace.from_config(path="config-sponsor-we.json", auth=auth)
 
 ws = Workspace.from_config()
 print('Workspace name: ' + ws.name, 
